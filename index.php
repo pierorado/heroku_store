@@ -1,5 +1,5 @@
 <?php 
-/*
+
  	include "conexion.php";
  	$usuarios=$_POST['user'];
 	$contra=$_POST['pass'];
@@ -11,7 +11,7 @@
  			echo '<script language="javascript">alert("Credenciales inválidas");</script>';
  	}
  	
- */
+ 
  ?>
 
 
