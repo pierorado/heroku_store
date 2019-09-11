@@ -1,5 +1,10 @@
 <?php  
-	
+/*
+	$host="localhost";
+	$user="root";
+	$password="";
+	$database="heroku_tienda";
+	*/
 	 $host="us-cdbr-iron-east-02.cleardb.net";
 	$user="bc6adcaf2484c9";
 	$password="8385b790";

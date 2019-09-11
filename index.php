@@ -1,16 +1,20 @@
 <?php 
 
- 	include "conexion.php";
+ 	require ("conexion.php");
+ 	if (!empty($_POST)) {
+ 		# code...
+ 	
  	$usuarios=$_POST['user'];
 	$contra=$_POST['pass'];
- 	$resultado=mysqli_query($conexion,"select * from usuarios where usuario='".$usuarios."' and clave='".$contra."' ");
+ 	$resultado=mysqli_query($conexion,"SELECT * from usuarios WHERE usuario='$usuarios' AND clave='$contra'");
+ 	
  	$fila=mysqli_num_rows($resultado);
  	if ($fila > 0 ) {
- 		headesr('location:mantenimiento.php');
+ 		header('location:mantenimiento.php');
  	}else{
- 			echo '<script language="javascript">alert("Credenciales inválidas");</script>';
+ 			$error = "incorrecto o falta completar";
  	}
- 	
+ 	}
  
  ?>
 
@@ -35,21 +39,23 @@
 <body>
 	<div class="contenedor">
 
-<form method="post"  class="form-group" autocomplete="off">
+<form method="post"  class="form-group" autocomplete="off" >
 	<H1>LOGIN</H1>
   <div class="form-group">
     <label for="exampleInputEmail1">Usuario</label>
-    <input type="text" class="form-control" id="formGroupExampleInput"  name="user"  >
+    <input type="text" class="form-control" id="formGroupExampleInput"  name="user" required >
    
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword1"  name="pass">
+    <input type="password" class="form-control" id="exampleInputPassword1"  name="pass" required>
   </div>
   
   <button type="submit" class="btn btn-primary">INGRESAR</button>
   <button type="reset" class="btn btn-primary">RESET</button>
 </form>
+ <br>
+ <div style = "font-size:16px; color:#cc0000;"><?php echo isset($error) ? utf8_decode($error) : '' ; ?></div>
 	</div>
 
 </body>
